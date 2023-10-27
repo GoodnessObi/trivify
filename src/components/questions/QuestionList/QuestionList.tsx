@@ -18,7 +18,7 @@ const QuestionList = () => {
 	const queryParams = new URLSearchParams(location.search);
 	const currentPage = Number(queryParams.get('page')) || 1;
 
-	console.log(currentPage, 'lissssssssst');
+	// console.log(currentPage, 'lissssssssst');
 
 	useEffect(() => {
 		try {
@@ -48,6 +48,8 @@ const QuestionList = () => {
 			console.log(e);
 		}
 	};
+
+	useEffect(() => {}, []);
 
 	const handlePageChange = (value: number) => {
 		queryParams.set('page', value.toString());

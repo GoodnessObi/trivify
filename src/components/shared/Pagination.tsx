@@ -20,7 +20,8 @@ const Pagination = ({
 	// const endOffset = itemOffset + itemsOnDisplay;
 	// console.log(`Loading items from ${itemOffset} to ${endOffset}`);
 
-	const pageCount = Math.ceil(totalItems / itemsOnDisplay);
+	const pageCount =
+		totalItems > 0 ? Math.ceil(totalItems / itemsOnDisplay) : currentPage;
 
 	const handlePageClick = ({ selected }: { selected: number }) => {
 		// (page - 1) * itemsPerPage + 1
@@ -37,12 +38,13 @@ const Pagination = ({
 		<PaginationWrapper>
 			<ReactPaginate
 				breakLabel='...'
-				nextLabel='next >'
+				nextLabel='>>'
 				onPageChange={handlePageClick}
+				disableInitialCallback={true}
 				initialPage={currentPage - 1}
 				pageRangeDisplayed={5}
 				pageCount={pageCount}
-				previousLabel='< previous'
+				previousLabel='<<'
 				renderOnZeroPageCount={null}
 				pageClassName='page-item'
 				pageLinkClassName='page-link'
